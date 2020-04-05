@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.github.generator.dao.GeneratorConfigDao">
+    <select id="selectOne" resultType="com.github.generator.entity.GeneratorConfigEntity">
+        select * from sys_config limit 1;
+    </select>
+    
+    <update id="update">
+        update sys_config
+        set data_source_type = #{entity.dataSourceType},
+        data_source_url = #{entity.dataSourceUrl},
+        user_name = #{entity.userName},
+        password = #{entity.password},
+        use_local_date = #{entity.useLocalDate},
+        use_lombok = #{entity.useLombok},
+        package_name = #{entity.packageName},
+        module_name = #{entity.moduleName}
+        where id = #{entity.id}
+    </update>
+
+</mapper>
