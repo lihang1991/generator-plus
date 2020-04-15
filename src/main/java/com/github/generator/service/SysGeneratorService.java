@@ -8,6 +8,7 @@
 
 package com.github.generator.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.generator.dao.GeneratorDao;
 import com.github.generator.dataSource.DataSourceSelect;
 import com.github.generator.dataSource.anno.DataSource;
@@ -15,8 +16,6 @@ import com.github.generator.utils.ApplicationContextHelp;
 import com.github.generator.utils.GenUtils;
 import com.github.generator.utils.PageUtils;
 import com.github.generator.utils.Query;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,10 +41,11 @@ public class SysGeneratorService {
 	@DataSource(value = DataSourceSelect.GENERATOR)
 	public PageUtils queryList(Query query) {
 		GeneratorDao generatorDao = (GeneratorDao)applicationContextHelp.getBean("generatorDao");
-		Page<?> page = PageHelper.startPage(query.getPage(), query.getLimit());
-		List<Map<String, Object>> list = generatorDao.queryList(query);
+//		Page<?> page = PageHelper.startPage(query.getPage(), query.getLimit());
+		Page page = new Page(query.getPage(), query.getLimit());
+		List<Map<String, Object>> list = generatorDao.queryList(page, query);
 
-		return new PageUtils(list, (int)page.getTotal(), query.getLimit(), query.getPage());
+		return null;// new PageUtils(list, (int)page.getTotal(), query.getLimit(), query.getPage());
 	}
 
 	public Map<String, String> queryTable(String tableName) {

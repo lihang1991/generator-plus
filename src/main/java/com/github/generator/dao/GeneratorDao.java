@@ -16,6 +16,9 @@
 
 package com.github.generator.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 import java.util.List;
 import java.util.Map;
 
@@ -25,8 +28,8 @@ import java.util.Map;
  * @author Mark sunlightcs@gmail.com
  * @since 2018-07-24
  */
-public interface GeneratorDao {
-    List<Map<String, Object>> queryList(Map<String, Object> map);
+public interface GeneratorDao extends BaseMapper {
+    List<Map<String, Object>> queryList(Page page, Map<String, Object> map);
 
     Map<String, String> queryTable(String tableName);
 

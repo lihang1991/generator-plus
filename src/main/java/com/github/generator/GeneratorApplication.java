@@ -1,5 +1,6 @@
 package com.github.generator;
 
+import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 import com.github.generator.dataSource.DynamicDataSourceConfig;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
