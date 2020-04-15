@@ -24,8 +24,7 @@ import org.springframework.context.annotation.Primary;
  */
 @Configuration
 public class DbConfig {
-    @Value("${renren.database: mysql}")
-    private String database;
+
     @Autowired
     private MySQLGeneratorDao mySQLGeneratorDao;
     @Autowired
@@ -38,16 +37,6 @@ public class DbConfig {
     @Bean
     @Primary
     public GeneratorDao getGeneratorDao(){
-        if("mysql".equalsIgnoreCase(database)){
-            return mySQLGeneratorDao;
-        }else if("oracle".equalsIgnoreCase(database)){
-            return oracleGeneratorDao;
-        }else if("sqlserver".equalsIgnoreCase(database)){
-            return sqlServerGeneratorDao;
-        }else if("postgresql".equalsIgnoreCase(database)){
-            return postgreSQLGeneratorDao;
-        }else {
-            throw new RRException("不支持当前数据库：" + database);
-        }
+         return mySQLGeneratorDao;
     }
 }

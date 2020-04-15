@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * 全局属性配置
+ * @author lih
+ */
 @Controller
 @RequestMapping(value = "sys/config")
-public class SysDataSourceConfigController {
+public class SysConfigController {
 
     @Autowired
     private GeneratorConfigService generatorConfigService;
