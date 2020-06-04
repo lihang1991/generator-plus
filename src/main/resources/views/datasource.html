@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>代码生成器</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="plugins/jqgrid/ui.jqgrid-bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrapValidator.min.css">
+    <script src="libs/jquery.min.js"></script>
+    <script src="plugins/layer/layer.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="libs/vue.min.js"></script>
+    <script src="plugins/jqgrid/grid.locale-cn.js"></script>
+    <script src="plugins/jqgrid/jquery.jqGrid.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/bootstrapValidator.min.js"></script>
+</head>
+<body>
+<div id="dataapp">
+    <div class="grid-btn">
+        <div class="form-group col-sm-2">
+            <input type="text" class="form-control" v-model="q.tableName" @keyup.enter="query" placeholder="表名">
+        </div>
+        <a class="btn btn-default" @click="query">查询</a>
+        <a class="btn btn-primary" @click="showOrCloseModal"><i class="fa fa-file-code-o"></i>&nbsp;新增</a>
+    </div>
+    <table id="jqGrid"></table>
+    <div id="jqGridPager"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">新增或修改</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="form">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">数据库类型</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" v-model="form.name" name="name" id="name" placeholder="数据库类型">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="driverClassName" class="col-sm-2 col-form-label">驱动</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" v-model="form.driverClassName" name="driverClassName" id="driverClassName" placeholder="驱动">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="url" class="col-sm-2 col-form-label">链接地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" v-model="form.url" id="url" placeholder="链接地址">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-2 col-form-label">用户名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" v-model="form.username" id="username" placeholder="用户名">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-2 col-form-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" v-model="form.password" id="password" placeholder="密码">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a class="btn btn-primary" @click="saveBtn">保存</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/datasource.js"></script>
+</body>
+</html>

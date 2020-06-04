@@ -11,8 +11,8 @@
 		on sep.major_id=so.id and sep.minor_id=0
 		where (xtype='U' or xtype='v')
 		) t where 1=1
-		<if test="tableName != null and tableName.trim() != ''">
-			and t.tableName like concat('%', #{tableName}, '%')
+		<if test="map.tableName != null and map.tableName.trim() != ''">
+			and t.tableName like concat('%', #{map.tableName}, '%')
 		</if>
 		order by t.tableName
 	</select>

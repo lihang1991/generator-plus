@@ -29,7 +29,7 @@ import java.util.Map;
  * @since 2018-07-24
  */
 public interface GeneratorDao extends BaseMapper {
-    List<Map<String, Object>> queryList(Page page, Map<String, Object> map);
+    List<Map<String, Object>> queryList(Page page, Map map);
 
     Map<String, String> queryTable(String tableName);
 

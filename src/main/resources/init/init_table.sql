@@ -12,7 +12,7 @@ CREATE TABLE `sys_config` (
 
 CREATE TABLE `sys_datasource` (
   `ID` varchar(32) PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(32) NULL,
+  `name` varchar(32) NOT NULL unique,
   `url` varchar(120) NULL,
   `driver_class_name` varchar(32)  NULL,
   `username` varchar(32)  NULL,

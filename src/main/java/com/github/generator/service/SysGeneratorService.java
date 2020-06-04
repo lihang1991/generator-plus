@@ -33,7 +33,7 @@ import java.util.zip.ZipOutputStream;
 @Service
 public class SysGeneratorService {
 	//@Autowired
-	private GeneratorDao generatorDao;
+//	private GeneratorDao generatorDao;
 
 	@Autowired
 	ApplicationContextHelp applicationContextHelp;
@@ -45,17 +45,21 @@ public class SysGeneratorService {
 		Page page = new Page(query.getPage(), query.getLimit());
 		List<Map<String, Object>> list = generatorDao.queryList(page, query);
 
-		return null;// new PageUtils(list, (int)page.getTotal(), query.getLimit(), query.getPage());
+		return new PageUtils(list, (int)page.getTotal(), query.getLimit(), query.getPage());
 	}
 
+	@DataSource(value = DataSourceSelect.GENERATOR)
 	public Map<String, String> queryTable(String tableName) {
+		GeneratorDao generatorDao = (GeneratorDao)applicationContextHelp.getBean("generatorDao");
 		return generatorDao.queryTable(tableName);
 	}
 
+	@DataSource(value = DataSourceSelect.GENERATOR)
 	public List<Map<String, String>> queryColumns(String tableName) {
+		GeneratorDao generatorDao = (GeneratorDao)applicationContextHelp.getBean("generatorDao");
 		return generatorDao.queryColumns(tableName);
 	}
-
+	@DataSource(value = DataSourceSelect.GENERATOR)
 	public byte[] generatorCode(String[] tableNames) {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		ZipOutputStream zip = new ZipOutputStream(outputStream);

@@ -21,8 +21,22 @@
 <div id="rrapp">
 	<div class="grid-btn">
 		<div class="form-group col-sm-2">
-			<input type="text" class="form-control" v-model="q.tableName" @keyup.enter="query" placeholder="表名">
+<!--			<input type="text" class="form-control" v-model="q.tableName" @keyup.enter="query" placeholder="表名">-->
+			<div class="input-group">
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-default dropdown-toggle"
+							data-targrt=""
+							data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+						-请选择- <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+					</ul>
+				</div><!-- /btn-group -->
+				<input type="text" class="form-control" v-model="q.tableName" @keyup.enter="query" placeholder="表名">
+			</div><!-- /input-group -->
 		</div>
+
 		<a class="btn btn-default" @click="query">查询</a>
 		<a class="btn btn-primary" @click="generator"><i class="fa fa-file-code-o"></i>&nbsp;生成代码</a>
 	</div>

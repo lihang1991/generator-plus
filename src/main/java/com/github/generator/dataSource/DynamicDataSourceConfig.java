@@ -45,10 +45,16 @@ public class DynamicDataSourceConfig {
         return dynamicDataSource;
     }
 
+    /**
+     * 初始化表结构
+     * @param dataSource
+     * @return
+     */
     @Bean
     public DataSourceInitializer dataSourceInitializer(final DynamicDataSource dataSource) {
         ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
         resourceDatabasePopulator.addScript(new ClassPathResource("/init/init_table.sql"));
+        resourceDatabasePopulator.addScript(new ClassPathResource("/init/data.sql"));
         DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
         dataSourceInitializer.setDataSource(dataSource);
         dataSourceInitializer.setDatabasePopulator(resourceDatabasePopulator);

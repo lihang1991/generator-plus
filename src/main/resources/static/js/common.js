@@ -42,6 +42,14 @@ window.alert = function(msg, callback){
 	});
 }
 
+window.errorTip = function(msg) {
+	parent.layer.msg(msg, {icon: 2});
+}
+
+window.sucessTip = function(msg) {
+	parent.layer.msg(msg, {icon: 1});
+}
+
 //重写confirm式样框
 window.confirm = function(msg, callback){
 	parent.layer.confirm(msg, {btn: ['确定','取消']},
